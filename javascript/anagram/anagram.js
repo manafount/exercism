@@ -15,7 +15,22 @@ class Anagram {
   }
 
   matches(...args) {
+    let result = [];
 
+    // handle array input (will not handle multiple nested arrays)
+    if (Array.isArray(args[0])) {
+      args = args[0];
+    }
+
+    for (let i = 0; i < args.length; i++) {
+      if (this.match(args[i].toLowerCase())) {
+        if (this.word !== args[i].toLowerCase()) {
+          result.push(args[i]);
+        }
+      }
+    }
+
+    return result;
   }
 
   match(string) {
